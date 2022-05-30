@@ -21,7 +21,8 @@ class FormControl extends Component {
                 lastname: false,
                 telnum: false,
                 email: false,
-                comment: false
+                comment: false,
+                message: false,
             }
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,7 +44,7 @@ class FormControl extends Component {
     handleSubmit(event) {
         console.log('Current State is: ' + JSON.stringify(this.state));
         // alert('Current State is: ' + JSON.stringify(this.state));
-        alert('User name: ' + this.state.firstname + '\nYour comment: ' + this.state.message);
+        alert('User name : ' + this.state.firstname + '\nYour comment : ' + this.state.lastname);
         this.state.firstname = '';
         this.state.message = '';
         event.preventDefault();
@@ -54,24 +55,21 @@ class FormControl extends Component {
         });
     }
 
-    validate(firstname, lastname, telnum, email, comment) { 
+    validate(firstname, lastname, telnum, email, comment, message) { 
         const errors = {
             firstname: '',
             lastname: '',
             telnum: '',
             email: '',
             comment: '',
+            message: '',
         };
 
         if (this.state.touched.firstname && firstname.length < 1)
             errors.firstname = 'Please fill your User name.';
 
-        if (this.state.touched.comment && comment === '')
-            errors.comment = 'Pleas fill your comment before submit.'
-        // if (this.state.touched.lastname && lastname.length < 3)
-        //     errors.lastname = 'Last Name should be >= 3 characters';
-        // else if (this.state.touched.lastname && lastname.length > 10)
-        //     errors.lastname = 'Last Name should be <= 10 characters';
+        if (this.state.touched.lastname && lastname.length < 1)
+            errors.lastname = 'Please fill your Comment.';
 
         // const reg = /^\d+$/;
         // if (this.state.touched.telnum && !reg.test(telnum))
@@ -89,7 +87,7 @@ class FormControl extends Component {
         return (
             <div className="container">
                 <div className="row row-content justify-content-center"> 
-                    <div className="col-12 col-md-9 justify-content-center">
+                    <div className="col-10  justify-content-center">
                         <h3 className=''>Send us your Comments</h3>
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup row>
@@ -111,6 +109,7 @@ class FormControl extends Component {
                                     <Input type="select" name="contactType"
                                         value={this.state.contactType}
                                         onChange={this.handleInputChange}>
+                                        <option> </option>
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -120,7 +119,8 @@ class FormControl extends Component {
                                     </Input>
                                 </Col>
                             </FormGroup>
-                            <FormGroup row>
+                            
+                            {/* <FormGroup row>
                                 <Label htmlFor="message" md={2}>Your comment</Label>
                                 <Col md={10}>
                                     <Input type="textarea" id="message" name="message"
@@ -128,10 +128,25 @@ class FormControl extends Component {
                                         value={this.state.message}
                                         placeholder="Comment here!!"
                                         onChange={this.handleInputChange}
-                                        valid={errors.comment === ''}
-                                        invalid={errors.comment !== ''}
+                                        onBlur={this.handleBlur('messgae')}
+                                        valid={errors.message === ''}
+                                        invalid={errors.message !== ''}
                                         ></Input>
                                         
+                                </Col>
+                            </FormGroup> */}
+                            <FormGroup row>
+                                <Label htmlFor="lastname" md={2}>User name</Label>
+                                <Col md={10}>
+                                    <Input type="textarea" id="lastname" name="lastname"
+                                    rows="12"
+                                        placeholder="User name"
+                                        value={this.state.lastname}
+                                        valid={errors.lastname === ''}
+                                        invalid={errors.lastname !== ''}
+                                        onBlur={this.handleBlur('lastname')}
+                                        onChange={this.handleInputChange} />
+                                    <FormFeedback>{errors.lastname}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>

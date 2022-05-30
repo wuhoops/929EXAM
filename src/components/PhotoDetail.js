@@ -26,7 +26,6 @@ class PhotoDetail extends Component {
             return (
                 <>
                     <Card onClick={this.toggleModal}>
-                        Click photo to comment or see likes.
                         <CardImg top src={photo.image} alt={photo.name} />
                         <CardBody>
                             <CardTitle>{photo.name}</CardTitle>
@@ -34,11 +33,11 @@ class PhotoDetail extends Component {
                         </CardBody>
                     </Card>
                     <Button
-                         
+                         className="mt-3"
                         color="danger"
                         onClick={this.toggleModal}
                     >
-                        Click Me
+                        Click photo to comment or likes.
                     </Button>
                     <Modal size="xl" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                         <ModalHeader toggle={this.toggleModal}>

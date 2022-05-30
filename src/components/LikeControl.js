@@ -12,14 +12,15 @@ function LikeControl(props){
 
     return (
         <>{console.log(props.like)}
-            <div>
+            <div className="text-center">
                 <Button className="mt-3 px-4"
                 onClick={increase}
                     color="warning"
                 >
                     <strong className="fs-4">Like</strong>
                 </Button>
-                <p className="fs-3">Currnet likes is: {like}</p>
+                <div className="fs-5">Currnet likes is:</div>
+                <p className="fs-2 fw-bold">{like} likes</p>
                 
             </div>
         </>

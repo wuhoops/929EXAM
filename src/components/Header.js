@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText } from "reactstrap";
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink,UncontrolledCollapse, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText } from "reactstrap";
 const Header = () => {
+    const [nav, setNav] = useState(false);
+    const toggleNav = () => setNav(!nav);
     return (
         <>
             <div style={{backgroundColor: "#FFF5D3"}}>
@@ -12,10 +14,10 @@ const Header = () => {
                     light
                 >
                     <NavbarBrand href="/">
-                        929 EXAM :)
+                        <strong>929 EXAM :)</strong>
                     </NavbarBrand>
-                    <NavbarToggler onClick={function noRefCheck() { }} />
-                    <Collapse navbar>
+                    <NavbarToggler onClick={toggleNav} id="nav"/>
+                    <UncontrolledCollapse toggler="#nav" navbar>
                         <Nav
                             className="me-auto"
                             navbar
@@ -38,7 +40,7 @@ const Header = () => {
 
                         </Nav>
 
-                    </Collapse>
+                    </UncontrolledCollapse>
                 </Navbar>
                 <div className="py-5" >
                     <div className="container">

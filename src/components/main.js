@@ -8,6 +8,7 @@ import Gallery from './Gallery';
 import PhotoDetail from './PhotoDetail';
 import Home from './HomeComponent';
 import { Card, CardImg, CardText, CardTitle, CardSubtitle } from 'reactstrap'
+import { Switch } from 'react-router-dom';
 
 
 const mapStateToProps = state => {
@@ -30,7 +31,7 @@ class Main extends Component {
 
                     <PhotoDetail photo={this.props.photos.filter((photo) => photo.id === parseInt(match.params.photoId, 10))[0]}
                         selectedPhoto={this.props.selectedPhoto} />
-                    
+
                 </>
             );
         };
@@ -50,11 +51,13 @@ class Main extends Component {
             <div>
                 {console.log(this.props)}
                 <Header />
-                <Route exact path='/' component={Homepage} />
-                <Route exact path='/aboutme' component={AboutMe} />
-                <Route path='/gallery/:photoId' component={PhotoWithId} />
-                <Route exact path='/home' component={Homepage} />
-                <Route exact path='/gallery' component={() => <Gallery photos={this.props.photos} />} />
+                <Switch>
+                    <Route exact path='/' component={Homepage} />
+                    <Route path='/aboutme' component={AboutMe} />
+                    <Route path='/gallery/:photoId' component={PhotoWithId} />
+                    <Route exact path='/home' component={Homepage} />
+                    <Route exact path='/gallery' component={() => <Gallery photos={this.props.photos} />} />
+                </Switch>
                 <Footer />
             </div >
 
