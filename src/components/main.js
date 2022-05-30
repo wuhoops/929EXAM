@@ -9,6 +9,7 @@ import PhotoDetail from './PhotoDetail';
 import Home from './HomeComponent';
 import { Card, CardImg, CardText, CardTitle, CardSubtitle } from 'reactstrap'
 import { Switch } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 const mapStateToProps = state => {
@@ -55,8 +56,9 @@ class Main extends Component {
                     <Route exact path='/' component={Homepage} />
                     <Route path='/aboutme' component={AboutMe} />
                     <Route path='/gallery/:photoId' component={PhotoWithId} />
-                    <Route exact path='/home' component={Homepage} />
-                    <Route exact path='/gallery' component={() => <Gallery photos={this.props.photos} />} />
+                    <Route path='/home' component={Homepage} />
+                    <Route path='/gallery' component={() => <Gallery photos={this.props.photos} />} />
+                    <Redirect to='/home' />
                 </Switch>
                 <Footer />
             </div >

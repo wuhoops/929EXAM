@@ -23,18 +23,18 @@ const Header = () => {
                             navbar
                         >
                             <NavItem>
-                                <NavLink className='nav-link' to='home'>
-                                    <Link to='home' className="nav-link">Home</Link>
+                                <NavLink className='nav-link' to='/home'>
+                                    <Link to='/home' className="nav-link">Home</Link>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className='nav-link' to='aboutme'>
-                                    <Link to='aboutme' className="nav-link">About me</Link>
+                                <NavLink className='nav-link' to='/aboutme'>
+                                    <Link to='/aboutme' className="nav-link">About me</Link>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className='nav-link' to='gallery'>
-                                    <Link to='gallery' className="nav-link">Gallery</Link>
+                                <NavLink className='nav-link' to='/gallery'>
+                                    <Link to='/gallery' className="nav-link">Gallery</Link>
                                 </NavLink>
                             </NavItem>
 
