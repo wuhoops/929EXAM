@@ -19,7 +19,7 @@ function LikeControl(props){
                 >
                     <strong className="fs-4">Like</strong>
                 </Button>
-                <div className="fs-5">Currnet likes is:</div>
+                <div className="fs-5">Current likes is:</div>
                 <p className="fs-2 fw-bold">{like} likes</p>
                 
             </div>

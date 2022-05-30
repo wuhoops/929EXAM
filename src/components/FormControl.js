@@ -45,8 +45,14 @@ class FormControl extends Component {
         console.log('Current State is: ' + JSON.stringify(this.state));
         // alert('Current State is: ' + JSON.stringify(this.state));
         alert('User name : ' + this.state.firstname + '\nYour comment : ' + this.state.lastname);
-        this.state.firstname = '';
-        this.state.message = '';
+        this.setState({
+            firstname: '',
+            lastname: '',
+            touched: {
+                firstname: false,
+                lastname: false,
+            }
+          });
         event.preventDefault();
     }
     handleBlur = (field) => (evt) => {
@@ -55,14 +61,10 @@ class FormControl extends Component {
         });
     }
 
-    validate(firstname, lastname, telnum, email, comment, message) { 
+    validate(firstname, lastname) { 
         const errors = {
             firstname: '',
             lastname: '',
-            telnum: '',
-            email: '',
-            comment: '',
-            message: '',
         };
 
         if (this.state.touched.firstname && firstname.length < 1)
@@ -136,11 +138,11 @@ class FormControl extends Component {
                                 </Col>
                             </FormGroup> */}
                             <FormGroup row>
-                                <Label htmlFor="lastname" md={2}>User name</Label>
+                                <Label htmlFor="lastname" md={2}>Comment</Label>
                                 <Col md={10}>
                                     <Input type="textarea" id="lastname" name="lastname"
                                     rows="12"
-                                        placeholder="User name"
+                                        placeholder="Comment"
                                         value={this.state.lastname}
                                         valid={errors.lastname === ''}
                                         invalid={errors.lastname !== ''}
