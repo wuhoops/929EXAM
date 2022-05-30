@@ -1,6 +1,9 @@
-import React, {Component } from "react";
+import React, { Component } from "react";
 import { Card, CardImg, CardBody, CardTitle, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import FormControl from "./FormControl";
+import LikeControl from "./LikeControl";
+
 class PhotoDetail extends Component {
     constructor(props) {
         super(props)
@@ -16,6 +19,7 @@ class PhotoDetail extends Component {
                         <CardText>{photo.description}</CardText>
                     </CardBody>
                 </Card>
+
             );
     }
 
@@ -23,7 +27,7 @@ class PhotoDetail extends Component {
         console.log(this.props.photo);
         const photo = this.props.photo;
         console.log(this.props);
-        {console.log(photo)}
+        { console.log(photo) }
         return (
             <>  <div className='container'>
                 <Breadcrumb>
@@ -31,12 +35,14 @@ class PhotoDetail extends Component {
                     <BreadcrumbItem active>{photo.name}</BreadcrumbItem>
                 </Breadcrumb>
                 <div className='row justify-content-evenly'>
-                    <div className="col-12 col-md-6 my-5">
+                    <div className="col-12 col-xl-6 my-5">
                         {this.renderPhoto()}
+                        <LikeControl />
                     </div>
-                    
+                    <div className="col-12 col-xl-6 my-5">
+                        <FormControl />
+                    </div>
                 </div>
-
             </div>
 
             </>
