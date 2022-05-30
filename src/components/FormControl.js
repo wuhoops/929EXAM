@@ -44,7 +44,8 @@ class FormControl extends Component {
         console.log('Current State is: ' + JSON.stringify(this.state));
         // alert('Current State is: ' + JSON.stringify(this.state));
         alert('User name: ' + this.state.firstname + '\nYour comment: ' + this.state.message);
-        
+        this.state.firstname = '';
+        this.state.message = '';
         event.preventDefault();
     }
     handleBlur = (field) => (evt) => {
@@ -53,7 +54,7 @@ class FormControl extends Component {
         });
     }
 
-    validate(firstname, lastname, telnum, email, comment) {
+    validate(firstname, lastname, telnum, email, comment) { 
         const errors = {
             firstname: '',
             lastname: '',
@@ -87,11 +88,9 @@ class FormControl extends Component {
         const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
         return (
             <div className="container">
-                <div className="row row-content">
-                    <div className="col-12">
-                        <h3>Send us your Comments</h3>
-                    </div>
-                    <div className="col-12 col-md-9">
+                <div className="row row-content justify-content-center"> 
+                    <div className="col-12 col-md-9 justify-content-center">
+                        <h3 className=''>Send us your Comments</h3>
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup row>
                                 <Label htmlFor="firstname" md={2}>User name</Label>
@@ -136,7 +135,7 @@ class FormControl extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Col md={{ size: 10, offset: 2 }}>
+                                <Col md={{size: 10, offset: 2}}>
                                     <Button type="submit" color="primary">
                                         Submit
                                     </Button>
